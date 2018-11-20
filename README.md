@@ -1,0 +1,3 @@
+- Purpose : Combine seperate social media feeds into a more convenient single feed.
+- Motivation : Launchpad for fundamental Web Application concepts and features. Seperate tabs for each feed is inconvenint as well.
+- Status : Add pagination and run php http requests asynchronously for quicker load times.
