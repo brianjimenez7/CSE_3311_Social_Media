@@ -57,7 +57,7 @@ class facebookm {
 				}
 			}
 			$this->posts = $posts;
-			return $post[0];
+			// return $post[0];
 
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {
 			return 'Graph returned an error: at GetPostsURL top level' . $e->getMessage();
@@ -102,7 +102,7 @@ class facebookm {
 		catch (Exception $e) {
 			return 'Exception:' .$e->getMessage();
 		}
-		// $this->GetEmbeds();
+		$this->GetEmbeds();
 	}
 }
 ?>

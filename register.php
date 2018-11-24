@@ -66,7 +66,7 @@ if (isset($_POST['register'])) {
     <div class="row mt-5 justify-content-center myregisterheader">
       <div class="col-6 text-center">
         <img src="img/planless.svg" width="80" height="80" alt="" id="logo">
-        <p class="lead">Register to MonoSmash</p>
+        <p class="lead">Register to SmashFeed</p>
       </div>
     </div>
     <div class="row justify-content-center myregisterform">
@@ -105,7 +105,7 @@ if (isset($_POST['register'])) {
 	<script>
     $(document).ready(function () {
       $("#logo").click(function () {
-        window.location.href = "http://localhost/monosmash/main.php";
+        window.location.href = "http://localhost/monosmash/register.php";
       });
 
     });

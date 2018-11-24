@@ -72,30 +72,33 @@ if (!TESTLOGIN::isLoggedIn()) {
           url: "./getfeed.php",
           //url: "./facebook/ajax/driver.php",
           success: function (data) {
-            console.log(data);
+            // console.log(data);
             var predata = '<div class="grid-item">';
             var postdata = '</div>';
             var sorted_data = data.sort(function(a,b) {
               return new Date(b.created_time) - new Date(a.created_time);
             });
+            // console.log(sorted_data);
             sorted_data.forEach(function(element) {
-              element.html = predata + element.html + postdata
+              element.html = predata + element.html + postdata;
+              //console.log(element.html);
             })
-            var fb_script = document.createElement("script");
-            fb_script.innerHTML = '(function (d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s);js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11";fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));';
-            document.head.appendChild(fb_script);
+            //console.log(sorted_data);
+            // var fb_script = document.createElement("script");
+            // fb_script.innerHTML = '(function (d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s);js.id = id;js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11";fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));';
+            // document.head.appendChild(fb_script);
             $.each(sorted_data, function(key,val) {
               $("#grid").append(val.html);
             })
             var tw_script = document.createElement("script");
             tw_script.setAttribute('src',"https://platform.twitter.com/widgets.js");
+            // console.log(tw_script);
             document.body.appendChild(tw_script);
             var msnry_script = document.createElement("script");
             msnry_script.setAttribute('src','https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js');
             document.body.appendChild(msnry_script);
+            console.log(data);
           }
-          // console.log("made it");
-          
         })
       });  
 /*      $(document).ready(function () {

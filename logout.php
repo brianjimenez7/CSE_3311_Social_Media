@@ -7,11 +7,11 @@ if (!TESTLOGIN::isLoggedIn()) {
 else {
 	if (isset($_COOKIE['SNID'])) {
 		DB::query('DELETE FROM login_tokens WHERE token=:token', array(':token' => sha1($_COOKIE['SNID'])));
-		header('Location: main.php');
+		header('Location: login.php');
 	}
 	setcookie('SNID', '1', time() - 3600);
 	setcookie('SNID_', '1', time() - 3600);
-	header("Location: main.php");
+	header("Location: login.php");
 }
 ?>
 

@@ -71,7 +71,7 @@ if (isset($_POST['login'])) {
     <div class="row mt-5 justify-content-center myloginheader">
       <div class="col-6 text-center">
         <img src="img/planless.svg" width="80" height="80" alt="" id="logo">
-        <p class="lead">Sign in to MonoSmash</p>
+        <p class="lead">Sign in to SmashFeed</p>
       </div>
     </div>
     <div class="row justify-content-center myloginform">

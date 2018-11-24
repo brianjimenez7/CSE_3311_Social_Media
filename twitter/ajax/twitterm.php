@@ -22,14 +22,17 @@ class twitterm {
 	private function hasTwitter() {
 		if(DB::query('SELECT user_id FROM twitter WHERE user_id=:userid', array(':userid' => $this->userid))) {
 			$this->hasTwitter = true;
+			// //going to put this to see if works
+			// return $this->hasTwitter;
 		} else {
 			throw new Exception("User Has No Facebook");
 		}
 	}
 	private function LoadTwitterCredentials() {
 		$sql_creds = DB::query('SELECT * FROM twitter WHERE user_id=:userid', array(':userid' => $this->userid));
-		$tw_ot = $sql_creds[0]['oauth_token'];
-		$tw_ots = $sql_creds[0]['oauth_token_secret'];
+		$tw_ot = $sql_creds[0]['oath_token'];
+		$tw_ots = $sql_creds[0]['oath_token_secret'];
+		// return $tw_ot;
 		$this->credentials = array(
 			"tw_ot" => $tw_ot,
 			"tw_ots" => $tw_ots
@@ -48,8 +51,11 @@ class twitterm {
 		$embeds = [];
 		$statustimelineparams = ['count' => $count, "trim_user" => false];
 		$statustimeline = $this->twitterobj->get('statuses/home_timeline', $statustimelineparams);
+		
+		// return $this->twitterobj->getLastHttpCode();
 		if ($this->twitterobj->getLastHttpCode() == 200) {
 			// Tweet posted succesfully
+			// return "able";
 		} else {
 				throw new Exception("Could not get Twitter Timeline");
 		}
@@ -64,6 +70,7 @@ class twitterm {
 			$embeds[] = array('created_time'=>$item->created_at, 'provider'=>'twitter', 'html'=>$data->html);
 			$this->embeds = $embeds;
 		}
+		// return $embeds[0];
 	}
 
 	function connect() {
@@ -81,6 +88,7 @@ class twitterm {
 		try {
 			$this->GetTwitterEmbeds($limit);
 			echo $this->GetTwitterEmbeds($limit);
+			
 		}
 		catch (Exception $e) {
 			return 'Error: '. $e->getMessage();

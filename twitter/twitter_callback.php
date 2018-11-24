@@ -38,7 +38,9 @@
 		// echo $ots;
 		// echo "<br>";
 		DB::query('INSERT INTO twitter VALUES (null,:id,:ot,:ots)', array(':id'=>$id,':ot'=>$ot,':ots'=>$ots));
-		header('Location: https://741d1331.ngrok.io/monosmash/settings-social.php?fresh_connect=1');
+		// header('Location: https://741d1331.ngrok.io/monosmash/settings-social.php?fresh_connect=1');
+		//header('Location: https://bcbc8a42.ngrok.io/monosmash/settings-social.php?fresh_connect=1');
+		header('Location: https://bcbc8a42.ngrok.io/monosmash/home.php');
 		//header('Location: http://localhost:8888/monosmash/home.php');
 		// header('Location: home.php');
 	}
