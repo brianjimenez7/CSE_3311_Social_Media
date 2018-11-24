@@ -57,7 +57,9 @@ if (! $accessToken->isLongLived()) {
 }
 $user_token = $accessToken->getValue();
 DB::query('INSERT INTO facebook VALUES (null,:id,:at)', array(':id'=>$id,':at'=>$user_token));
-header('Location: https://741d1331.ngrok.io/monosmash/settings-social.php?fresh_connect=2');
+// header('Location: https://741d1331.ngrok.io/monosmash/settings-social.php?fresh_connect=2');
+// header('Location: https://741d1331.ngrok.io/monosmash/home.php');
+header('Location: https://741d1331.ngrok.io/monosmash/getfeed.php');
 
 
 

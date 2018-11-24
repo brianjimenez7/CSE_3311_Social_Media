@@ -28,8 +28,8 @@ class twitterm {
 	}
 	private function LoadTwitterCredentials() {
 		$sql_creds = DB::query('SELECT * FROM twitter WHERE user_id=:userid', array(':userid' => $this->userid));
-		$tw_ot = $sql_creds[0]['tw_oauth_token'];
-		$tw_ots = $sql_creds[0]['tw_oauth_token_secret'];
+		$tw_ot = $sql_creds[0]['oauth_token'];
+		$tw_ots = $sql_creds[0]['oauth_token_secret'];
 		$this->credentials = array(
 			"tw_ot" => $tw_ot,
 			"tw_ots" => $tw_ots
@@ -80,6 +80,7 @@ class twitterm {
 	function userposts($limit) {
 		try {
 			$this->GetTwitterEmbeds($limit);
+			echo $this->GetTwitterEmbeds($limit);
 		}
 		catch (Exception $e) {
 			return 'Error: '. $e->getMessage();

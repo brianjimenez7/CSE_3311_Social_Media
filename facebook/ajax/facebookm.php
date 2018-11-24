@@ -21,6 +21,7 @@ class facebookm {
 	}
 	private function hasFacebook() {
 		if(DB::query('SELECT user_id FROM facebook WHERE user_id=:userid', array(':userid' => $this->userid))) {
+			//goes in here
 			$this->hasFacebook = true;
 		} else {
 			throw new Exception("User Has No Facebook");
@@ -28,7 +29,9 @@ class facebookm {
 	}
 	private function LoadFacebookCredentials() {
 		$sql_creds = DB::query('SELECT * FROM facebook WHERE user_id=:userid', array(':userid' => $this->userid));
-		$fb_at = $sql_creds[0]['fb_access_token'];
+		// $fb_at = $sql_creds[0]['fb_access_token'];
+		$fb_at = $sql_creds[0]['user_token']; 
+		// return $fb_at; 
 		$this->credentials = array(
 			"fb_at" => $fb_at
 		);
@@ -43,16 +46,18 @@ class facebookm {
 	private function GetPostsURL() {
 		try {
 			$posts = [];
-			$response = $this->facebookobj->get('/me/likes?fields=id,name', $this->credentials['fb_at']);
+			//ndsj=/me/likes?fields=id,name
+			$response = $this->facebookobj->get('me?fields=id,name,posts', $this->credentials['fb_at']);
 			$graphEdge = $response->getGraphEdge();
 			foreach($graphEdge as $graphNode) {
-				$pageposts = $this->facebookobj->get('/' . $graphNode['id'] . '/posts?limit=1&fields=permalink_url,created_time,description', $this->credentials['fb_at']);
+				$pageposts = $this->facebookobj->get('/' . $graphNode['id'] . '/posts?limit=1&fields=message,created_time,description', $this->credentials['fb_at']);
 				$edge = $pageposts->getGraphEdge();
 				foreach($edge as $node) {
-					$posts[] = array('created_time'=>$node['created_time']->format('Y-m-d H:i:s'), 'provider'=>'facebook', 'post_url'=>$node['permalink_url']);
+					$posts[] = array('created_time'=>$node['created_time']->format('Y-m-d H:i:s'), 'provider'=>'facebook', 'message'=>$node['message']);
 				}
 			}
 			$this->posts = $posts;
+			return $post[0];
 
 		} catch(Facebook\Exceptions\FacebookResponseException $e) {
 			return 'Graph returned an error: at GetPostsURL top level' . $e->getMessage();
@@ -87,15 +92,17 @@ class facebookm {
 		}
 		$this->LoadFacebookCredentials();
 		$this->GetFacebookObject();
+		
+		// return $this->LoadFacebookCredentials();
 	}
 	function userposts($limit) {
 		try {
-			$this->GetPostsURL();
+			return $this->GetPostsURL();
 		}
 		catch (Exception $e) {
 			return 'Exception:' .$e->getMessage();
 		}
-		$this->GetEmbeds();
+		// $this->GetEmbeds();
 	}
 }
 ?>
