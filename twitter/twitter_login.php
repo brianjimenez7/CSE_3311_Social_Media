@@ -5,7 +5,7 @@
 	session_start();
 	$config = require_once 'config_twitter.php';
 
-		function genAuthToken($config) {
+		function genAuthToken() {
 			global $twitteroauth;
 			global $request_token;
 			global $config;
@@ -24,7 +24,7 @@
 			$url = $twitteroauth->url('oauth/authorize', ['oauth_token' => $request_token['oauth_token']]);
 			return $url;
 		}
-	
+		// echo "goes in here";
 		genAuthToken();
 		$url = setTokGenURL();
 		header('Location: '. $url);

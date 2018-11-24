@@ -66,7 +66,7 @@ else {
     <!-- NAVBAR -->
     <div class="myhomenav">
       <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="home.php">
           <img src="img/planless.svg" width="40" height="40" alt="">
         </a>
         <form class="form-inline">
@@ -124,7 +124,7 @@ else {
                 <?php elseif(array_key_exists("twit",$connects)) : ?>
                   <a href="#" class="btn btn-info">CONNECTED</a>
                 <?php else :?>
-                  <a href="http://localhost/monosmash/twitter/twitter_login.php" class="btn btn-info" id="twitter">Click to Connect</a>
+                  <a href="twitter/twitter_login.php" class="btn btn-info" id="twitter">Click to Connect</a>
                   <!-- <a href=""><i class="material-icons align-middle">close</i></a> -->
                 <?php endif; ?>
               </div>
@@ -139,7 +139,7 @@ else {
               <?php elseif(array_key_exists("fb",$connects)) : ?>
                 <a href="#" class="btn btn-primary">CONNECTED</a>
               <?php else :?>
-                <a href="http://localhost/monosmash/facebook/facebook_login.php" class="btn btn-primary" id="facebook">Click to Connect</a>
+                <a href="facebook/facebook_login.php" class="btn btn-primary" id="facebook">Click to Connect</a>
                   <!-- <a href=""><i class="material-icons align-middle">close</i></a> -->
               <?php endif; ?>
               </div>

@@ -1,10 +1,10 @@
 <?php
-include_once('/var/www/html/monosmash/classes/TESTLOGIN.php');
-include_once('/var/www/html/monosmash/classes/DB.php');
-require "/var/www/html/monosmash/twitter/vendor/autoload.php";
+include_once('./classes/TESTLOGIN.php');
+include_once('./classes/DB.php');
+require "./twitter/vendor/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
-$config = require '/var/www/html/monosmash/twitter/config_twitter.php';
+$config = require './twitter/config_twitter.php';
 $userid = TESTLOGIN::isLoggedIn();
 
 class twitterm {

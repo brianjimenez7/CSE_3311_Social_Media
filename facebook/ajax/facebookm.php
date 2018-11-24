@@ -1,9 +1,9 @@
 <?php
-include_once('/var/www/html/monosmash/classes/DB.php');
-include_once('/var/www/html/monosmash/classes/TESTLOGIN.php');
-require "/var/www/html/monosmash/facebook/vendor/autoload.php";
+include_once('./classes/DB.php');
+include_once('./classes/TESTLOGIN.php');
+require "./facebook/vendor/autoload.php";
 
-$config = require '/var/www/html/monosmash/facebook/config_facebook.php';
+$config = require './facebook/config_facebook.php';
 $userid = TESTLOGIN::isLoggedIn();
 
 class facebookm {
